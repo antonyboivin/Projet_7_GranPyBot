@@ -1,3 +1,110 @@
-.test {
-    color: red;
+/* en-tête */
+
+.banner {
+
+    background-image: linear-gradient(#147a3b, white);
+    height: 400px;
+    text-align: center;
+}
+
+.titre, h1 {
+    margin-top: 50px;
+    color: #fde401;
+    font-size: 100px;
+    font-family: "georgia", serif;
+    text-shadow: 10px 10px 10px black;
+}
+
+/* formulaire */
+
+.input-group {
+    margin-top: 5px;
+}
+
+/* Réponse */
+.answer{
+    margin-top: 50px;
+    height: 500px;
+    border-radius: 25px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: green green yellow yellow;
+    padding: 10px;
+    background-image: linear-gradient(white, #147a3b, white);
+ }
+
+
+
+/* Footer */
+.montserrat {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.module {
+    text-align: center;
+    background-image: linear-gradient(white, #147a3b);
+}
+
+
+
+
+/*----  [Social Icons]  ----*/
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-icons > li {
+    display: inline-block;
+}
+
+.social-icons > li > a {
+    background: #f5f5f5;
+    display: block;
+    margin: 0 8px 8px 0;
+    text-align: center;
+    line-height: 32px;
+    font-size: 14px;
+    height: 32px;
+    width: 32px;
+    color: #777777;
+}
+
+.social-icons > li > a:hover,
+.social-icons > li > a:focus {
+    background: #27CBC0;
+    color: #ffffff;
+}
+
+
+.social-icons-circle > li > a {
+    border-radius: 100%;
+}
+
+
+/* --- [ Social Icons Colored ] --- */
+.social-icons-colored > li > a {
+    color: #ffffff;
+}
+
+.social-icons-colored > li > a:hover,
+.social-icons-colored > li > a:focus {
+    opacity: 0.85;
+}
+
+
+/* --- [ Backgrounds ] --- */
+.bg-facebook {
+    background-color: #3b5998 !important;
+}
+
+.bg-linkedin {
+    background-color: #007bb6 !important;
+}
+
+.bg-github {
+    background-color: #3f91cb !important;
 }

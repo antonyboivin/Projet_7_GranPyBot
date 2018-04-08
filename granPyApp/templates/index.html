@@ -7,38 +7,86 @@
 
   <title>GrandPy Bot</title>
 
-  <!-- Bootstrap core CSS and CSS stylesheet -->
-  <link href="../static/css/Bootstrap.min.css" rel="stylesheet">
-  <link href="../static/css/style.css" rel="stylesheet">
+  <!-- Bootstrap core CSS and custom CSS stylesheet -->
+  <link href="../static/css/Bootstrap.min.css" rel="stylesheet"><!-- <link href="{{ url_for('static', filename='css/Bootstrap.min.css') }}" rel="stylesheet"> -->
+  <link href="../static/css/style.css" rel="stylesheet"><!-- <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"> -->
 </head>
+     
+<body> <!-- ***** BODY ***** -->
 
-<body>
-
-  <header>
-    <div class="container">
-      <div class="container-fluid">
-        <div class="row">
-          <div>
-            <img src="../static/img/granpy.jpg" alt="logo" width="256"/>
-          </div>
+  <header> <!-- ***** HEADER BANNIERE ***** -->
+    <div class="container-fluid banner">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+          <img src="../static/img/grandPygif.gif" alt="logo" width="256"/>
         </div>
-      </div>
-        <h1>GrandPy Bot</h1>
-        <h2>Que veux-tu savoir ?</h2>
-      </div>
+        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 titre">
+          <h1>GrandPy-Bot</h1>
+          <h2>Que veux-tu savoir mon petit...</h2>
+        </div>
   </header>
 
+  <section> <!-- ***** SECTION FORULAIRE  ***** -->    
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center v-center"> <!--   -->
+          <form class="col-lg-12">
+            <div class="input-group">
+                <form class="question" action="index.html" method="post"> <!-- supprimer class si inutile -->
+                    <input type="text" class="center-block form-control input-lg" title="Je t'écoute mon petit" placeholder="Je t'écoute..." id="query"/>
+                    <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">S'il te plaît GrandPy.</button></span>
+                </form>
+            </div>
+          </form>
+        </div>
+      </div> 
+    </div>
+  </section>
+
   <section>
+    <div class="container">
+      <div class="answer">
+        <p>Zone de super test de mon application !!!!!!!!!!!!!!!!!!!!</p>
+      </div>      
+    </div>
   </section>
 
   <footer>
+              <!-- ***** SOCIAL ***** -->
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">  -->
+<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
+<!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<section class="module divider-bottom">
+
+        <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <!-- col-sm-8 col-sm-offset-2 -->
+            <h5 class="montserrat text-uppercase bottom-line">Social</h5>
+            <ul class="social-icons social-icons-colored social-icons-circle m-t-50">
+              <li><a href="#" class="bg-facebook"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#" class="bg-linkedin"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#" class="bg-github"><i class="fa fa-github"></i></a></li>
+            </ul>
+
+          </div>
+
+        </div><!-- .row -->
+
+      </div>
+</section>
+
+
+
+
   </footer>
 
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script src="../static/js/jquery.js"></script>
-  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/jquery.js"></script> <!-- <script src="{{ url_for('static', filename='js/jquery.js') }}"></script> -->
+  <script src="../static/js/bootstrap.min.js"></script><!--<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> -->
 
   <script>
   </script>
