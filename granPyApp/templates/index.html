@@ -24,6 +24,8 @@
           <h1>GrandPy-Bot</h1>
           <h2>Que veux-tu savoir mon petit...</h2>
         </div>
+      </div>
+    </div>
   </header>
 
   <section> <!-- ***** SECTION FORULAIRE  ***** -->    
@@ -32,9 +34,11 @@
         <div class="col-lg-12 text-center v-center"> <!--   -->
           <form class="col-lg-12">
             <div class="input-group">
-                <form class="question" action="index.html" method="post"> <!-- supprimer class si inutile -->
-                    <input type="text" class="center-block form-control input-lg" title="Je t'écoute mon petit" placeholder="Je t'écoute..." id="query"/>
-                    <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">S'il te plaît GrandPy.</button></span>
+                <form class="userQuestion" action="index.html" method="post">
+                    <input type="text" class="center-block form-control input-lg" title="Je t'écoute mon petit" placeholder="Je t'écoute..." id="userRequest"/>
+                    <span class="input-group-btn">
+                      <button id="button-granpy" class="btn btn-lg btn-primary" type="button">S'il te plaît GrandPy.</button>
+                    </span>
                 </form>
             </div>
           </form>
@@ -45,9 +49,20 @@
 
   <section>
     <div class="container">
-      <div class="answer">
-        <p>Zone de super test de mon application !!!!!!!!!!!!!!!!!!!!</p>
+      <div class="answer"><!-- ZONE DE R2PONSE AJAX -->
       </div>      
+    </div>
+  </section>
+
+  <section> <!-- ***** SECTION GoogleMap  ***** -->
+    <div class="map"> 
+      <iframe
+        width="500"
+        height="250"
+        frameborder="" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBJoClBGNF-tJf3Gq1QY6v1zK6O09_2nrg
+        &q=reims" allowfullscreen>
+      </iframe>
     </div>
   </section>
 
@@ -89,8 +104,81 @@
   <script src="../static/js/bootstrap.min.js"></script><!--<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> -->
 
   <script>
+    $(document).ready(function () {
+        $("#button-granpy").click(function (event) {
+          var userEntry = 'Vous : ' + $("#userRequest").val();
+
+          var div = document.createElement('div');
+          div.style.border = "5px outset green"
+          div.style.marginBottom = "10px";
+          div.style.fontSize = "large";
+
+
+
+          div.append(userEntry);
+          $(".answer").append(div);
+
+            $.ajax({
+                url: "/userRequest",
+                type: "POST",
+                dataType: "json",
+                data: {userRequest: userEntry },
+                success: function (userRequest) {
+
+                  var div = document.createElement('div');
+                  var userRequest = "GrandPy : " + userRequest;
+                  div.style.color = 'yellow';
+                  div.style.textAlign = 'right';
+                  div.style.border = "5px outset white";
+                  div.style.marginBottom = "10px";
+                  div.style.fontSize = "large";
+                  div.focus();
+
+                  div.append(userRequest);
+                  $(".answer").append(div);
+
+                  $(".answer").scrollTop($(".answer")[0].scrollHeight);
+
+
+                }
+
+            });
+        });
+    });
   </script>
 
 </body>
 
 </html>
+
+<!--
+
+  <script>
+    $(document).ready(function () {
+        $("#button-granpy").click(function (event) {
+          var userEntry = $("#userRequest").val();
+
+          var paragraphe = document.createElement('p');
+          paragraphe.append(userEntry);
+          $(".answer").append(paragraphe);
+
+            $.ajax({
+                url: "/userRequest",
+                type: "POST",
+                dataType: "json",
+                data: {userRequest: userEntry },
+                success: function (userRequest) {
+
+                  var paragraphe = document.createElement('p');
+                  paragraphe.append(userRequest);
+                  $(".answer").append(paragraphe);
+                }
+
+            });
+        });
+    });
+  </script>
+
+
+
+-->

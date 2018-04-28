@@ -24,13 +24,21 @@
 /* Réponse */
 .answer{
     margin-top: 50px;
-    height: 500px;
+    height: 250px;
     border-radius: 25px;
     border-width: 2px;
     border-style: outset;
     border-color: green green yellow yellow;
     padding: 10px;
     background-image: linear-gradient(white, #147a3b, white);
+    overflow-y: scroll;
+ }
+
+
+ /* Map Google */
+ .map {
+    margin-top: 50px;
+    text-align: center;
  }
 
 
