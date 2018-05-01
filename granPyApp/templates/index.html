@@ -8,8 +8,12 @@
   <title>GrandPy Bot</title>
 
   <!-- Bootstrap core CSS and custom CSS stylesheet -->
-  <link href="../static/css/Bootstrap.min.css" rel="stylesheet"><!-- <link href="{{ url_for('static', filename='css/Bootstrap.min.css') }}" rel="stylesheet"> -->
-  <link href="../static/css/style.css" rel="stylesheet"><!-- <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"> -->
+  <link href="{{ url_for('static', filename='css/Bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJoClBGNF-tJf3Gq1QY6v1zK6O09_2nrg&callback=initMap">
+  </script>
+
 </head>
      
 <body> <!-- ***** BODY ***** -->
@@ -55,17 +59,9 @@
   </section>
 
   <section> <!-- ***** SECTION GoogleMap  ***** -->
-    <div class="map"> 
-      <iframe
-        width="500"
-        height="250"
-        frameborder="" style="border:0"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBJoClBGNF-tJf3Gq1QY6v1zK6O09_2nrg
-        &q=reims" allowfullscreen>
-      </iframe>
-    </div>
+    <div id="map"></div>
   </section>
-
+ 
   <footer>
               <!-- ***** SOCIAL ***** -->
 <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">  -->
@@ -100,85 +96,29 @@
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script src="../static/js/jquery.js"></script> <!-- <script src="{{ url_for('static', filename='js/jquery.js') }}"></script> -->
-  <script src="../static/js/bootstrap.min.js"></script><!--<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> -->
-
-  <script>
-    $(document).ready(function () {
-        $("#button-granpy").click(function (event) {
-          var userEntry = 'Vous : ' + $("#userRequest").val();
-
-          var div = document.createElement('div');
-          div.style.border = "5px outset green"
-          div.style.marginBottom = "10px";
-          div.style.fontSize = "large";
+  <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/customscript.js') }}"></script>
 
 
-
-          div.append(userEntry);
-          $(".answer").append(div);
-
-            $.ajax({
-                url: "/userRequest",
-                type: "POST",
-                dataType: "json",
-                data: {userRequest: userEntry },
-                success: function (userRequest) {
-
-                  var div = document.createElement('div');
-                  var userRequest = "GrandPy : " + userRequest;
-                  div.style.color = 'yellow';
-                  div.style.textAlign = 'right';
-                  div.style.border = "5px outset white";
-                  div.style.marginBottom = "10px";
-                  div.style.fontSize = "large";
-                  div.focus();
-
-                  div.append(userRequest);
-                  $(".answer").append(div);
-
-                  $(".answer").scrollTop($(".answer")[0].scrollHeight);
-
-
-                }
-
-            });
-        });
-    });
-  </script>
 
 </body>
 
 </html>
 
-<!--
-
+<!-- 
   <script>
-    $(document).ready(function () {
-        $("#button-granpy").click(function (event) {
-          var userEntry = $("#userRequest").val();
-
-          var paragraphe = document.createElement('p');
-          paragraphe.append(userEntry);
-          $(".answer").append(paragraphe);
-
-            $.ajax({
-                url: "/userRequest",
-                type: "POST",
-                dataType: "json",
-                data: {userRequest: userEntry },
-                success: function (userRequest) {
-
-                  var paragraphe = document.createElement('p');
-                  paragraphe.append(userRequest);
-                  $(".answer").append(paragraphe);
-                }
-
-            });
-        });
-    });
+    function initMap() {
+      var uluru = {lat: -25.363, lng: 131.044};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: uluru
+      });
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+      });
+    }
   </script>
-
-
 
 -->

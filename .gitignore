@@ -2,3 +2,4 @@ VENV/
 .idea
 geckodriver.log
 notePerso.md
+.vscode/
