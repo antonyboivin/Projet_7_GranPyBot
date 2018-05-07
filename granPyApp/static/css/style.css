@@ -34,6 +34,20 @@
     overflow-y: scroll;
  }
 
+.userQuestion {
+    border: 5px outset green;
+    margin-bottom: 10px;
+    font-size:  large;
+}
+
+.grandPyAnswer{
+    color: yellow;
+    text-align: right;
+    border: 5px outset white;
+    margin-bottom: 10px;
+    font-size: large;
+}
+
  /* Map Google */
 #map {
     height: 400px;

@@ -1,15 +1,17 @@
   $(document).ready(function () {
+        // Reaction of the application after a click of the user on the "S'il te plaît GrandPy" button.
         $("#button-granpy").click(function (event) {
+
+          // Repeating the user input in the dialog box.
           var userEntry = 'Vous : ' + $("#userRequest").val();
-
+          // Creating a "div" element and assigning a "userQuestion" class.
           var div = document.createElement('div');
-          div.style.border = "5px outset green"
-          div.style.marginBottom = "10px";
-          div.style.fontSize = "large";
-
+          div.setAttribute("class", "userQuestion");
+          // Adding the question to the following dialog box.
           div.append(userEntry);
           $(".answer").append(div);
 
+            // Send the request of the user with Ajax.
             $.ajax({
                 url: "/userRequest",
                 type: "POST",
@@ -17,20 +19,30 @@
                 data: {userRequest: userEntry },
                 success: function (userRequest) {
 
-                  var div = document.createElement('div');
+                  // Retrieving the user's request after analysis.
+                  // Convert the returned object to JSON.
+                  var analysisUserRequest = JSON.stringify(userRequest);
+                  // JSON Analysis.
+                  analysisUserRequest = JSON.parse(analysisUserRequest);
+                  // Retrieving the "coordinate" part of the JSON file.
+                  coord = analysisUserRequest.coordinate
+                  
+                  // Initialization of the GoogleMap with setting the coordinates of the request.
+                  initMap(coord);
+                  
+                  // Added the answer of grandPy-Bot.                  
                   var userRequest = "GrandPy : " + userRequest;
-                  div.style.color = 'yellow';
-                  div.style.textAlign = 'right';
-                  div.style.border = "5px outset white";
-                  div.style.marginBottom = "10px";
-                  div.style.fontSize = "large";
-                  div.focus();
-
+                  // Creating a "div" element and assigning a "grandPyAnswer" class.                  
+                  var div = document.createElement('div');
+                  div.setAttribute("class", "grandPyAnswer");
+        /*div.focus();*/
+                  // Adding the answer to the following dialog box.
                   div.append(userRequest);
                   $(".answer").append(div);
-
+                  // Method .scrollTop() makes it possible to keep the last exchanges visible in the dialog box.
                   $(".answer").scrollTop($(".answer")[0].scrollHeight);
 
+                  
 
                 }
 
@@ -38,31 +50,15 @@
         });
     });
 
-
-    function initMap() {
+    //Definition of the initMap function of GoogleMap.
+    function initMap(coord) {
+      var uluru = {'lat': coord.lat, 'lng': coord.lng};
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 8,
-        center: {lat: -34.397, lng: 150.644}
+        zoom: 15,
+        center: uluru
       });
-      var geocoder = new google.maps.Geocoder();
-
-      document.getElementById('submit').addEventListener('click', function() {
-        geocodeAddress(geocoder, map);
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
       });
-    }
-
-    function geocodeAddress(geocoder, resultsMap) {
-      var address = document.getElementById('address').value;
-      geocoder.geocode({'address': address}, function(results, status) {
-        if (status === 'OK') {
-          resultsMap.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
-            map: resultsMap,
-            position: results[0].geometry.location
-          });
-        } else {
-          alert('Geocode was not successful for the following reason: ' + status);
-        }
-      });
-    }
-
+    };
