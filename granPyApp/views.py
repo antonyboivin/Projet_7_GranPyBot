@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from .parser import Parser
-from .apiGoogleMap import GoogleMapsApi
+from .apigooglemap import GoogleMapsApi
+from .apiwikipedia import WikipediaApi
 
 app = Flask(__name__)
 
@@ -21,14 +22,18 @@ def analysis():
     # Returns the keywords of the user's request.
     userRequest = userRequest.clean_user_request()
 
-    # Creation of a GoogleMapsApi object with the request of the user. 
+    # Creation of a GoogleMapsApi object with the request of the user.
     userRequestLocation = GoogleMapsApi(userRequest)
     # Returns the coordinate of the user's request.
-    userRequestLocation = userRequestLocation.GoogleMapsApiCall()
+    userRequestLocation = userRequestLocation.googlemaps_apicall()
+
+    # Creation of WikipediaApi object whith the userRequest.
+    userRequestDescription = WikipediaApi(userRequest)
+    userRequestDescription = userRequestDescription.wikipedia_apicall()
 
     # Grouping of geographic and text data in the "datas" variable
     datas = {"coordinate" : userRequestLocation,
-             "description" : "test de description"}
+             "description" : userRequestDescription}
 
     return jsonify(datas)
 

@@ -35,6 +35,7 @@
  }
 
 .userQuestion {
+    text-align: center;
     border: 5px outset green;
     margin-bottom: 10px;
     font-size:  large;
@@ -42,7 +43,7 @@
 
 .grandPyAnswer{
     color: yellow;
-    text-align: right;
+    text-align: center;
     border: 5px outset white;
     margin-bottom: 10px;
     font-size: large;

@@ -30,8 +30,10 @@
                   // Initialization of the GoogleMap with setting the coordinates of the request.
                   initMap(coord);
                   
+                  // Retrieving the "description" part of the JSON file.
+                  descript = analysisUserRequest.description
                   // Added the answer of grandPy-Bot.                  
-                  var userRequest = "GrandPy : " + userRequest;
+                  var userRequest = "GrandPy : " + descript;
                   // Creating a "div" element and assigning a "grandPyAnswer" class.                  
                   var div = document.createElement('div');
                   div.setAttribute("class", "grandPyAnswer");

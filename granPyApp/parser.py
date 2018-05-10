@@ -1,12 +1,14 @@
 """
-    Module Docstring
+    This module will analyze the user's request and
+    then return the useful values ​​to the application.
 """
 import json
 
 
 class Parser:
     """
-        The X method retrieves the request from the user.
+        This Class will take into account the user's request in order
+        to apply the class method necessary for its analysis.
     """
     def __init__(self, user_request):
         self.user_request = user_request
@@ -14,8 +16,9 @@ class Parser:
     def clean_user_request(self):
         """
             Analyze the user's request to keep only useful words.
+            Example of a user request:"Connais tu Openclassrooms à Paris ?"
+            Returns the value: "['openclassrooms', 'paris']"
         """
-
         self.user_request = self.user_request.lower()
         self.user_request = self.user_request.split(" ")
 
@@ -24,30 +27,4 @@ class Parser:
         for word in gpb_stopwords:
             if word in self.user_request:
                 self.user_request.remove(word)
-        return self.user_request # ['openclassrooms', 'paris']
-
-
-"""
-testclass = "connais tu OpenClassrooms à Paris ?"
-
-
-def clean_user_request(user_request):
-    #Analyze the user s request to keep only useful words.
-
-    user_request = user_request.lower()
-    user_request = user_request.split(" ")
-
-    with open("gpb_stopwords.json") as stopWordsFile:
-        gpb_stopwords = json.load(stopWordsFile)
-    for word in gpb_stopwords:
-        if word in user_request:
-            user_request.remove(word)
-    print(user_request)
-
-
-#clean_user_request(testclass)
-
-testclass = "connais tu OpenClassrooms à Paris ?"
-test = Parser(testclass)
-print(test.clean_user_request())
-"""
+        return self.user_request
