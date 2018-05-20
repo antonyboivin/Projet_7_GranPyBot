@@ -11,6 +11,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+
 @app.route('/userRequest', methods=['POST'])
 def analysis():
     """
@@ -29,6 +30,7 @@ def analysis():
 
     # Creation of WikipediaApi object whith the userRequest.
     userRequestDescription = WikipediaApi(userRequest)
+    # Returns the description of the user's request.
     userRequestDescription = userRequestDescription.wikipedia_apicall()
 
     # Grouping of geographic and text data in the "datas" variable

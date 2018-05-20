@@ -1,4 +1,5 @@
   $(document).ready(function () {
+    $("#loaderDiv").hide();
         // Reaction of the application after a click of the user on the "S'il te plaît GrandPy" button.
         $("#button-granpy").click(function (event) {
 
@@ -17,7 +18,13 @@
                 type: "POST",
                 dataType: "json",
                 data: {userRequest: userEntry },
+                beforeSend: function() {
+                  //$("#loaderDiv").show();
+                  $(".answer").append($("#loaderDiv").show());
+                  $(".answer").scrollTop($(".answer")[0].scrollHeight);
+                },
                 success: function (userRequest) {
+                  $("#loaderDiv").hide();
 
                   // Retrieving the user's request after analysis.
                   // Convert the returned object to JSON.

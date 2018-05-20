@@ -49,6 +49,11 @@
     font-size: large;
 }
 
+/* Loader Div */
+#loaderDiv{
+    text-align: center;
+}
+
  /* Map Google */
 #map {
     height: 400px;
