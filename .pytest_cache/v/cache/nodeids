@@ -1,0 +1,4 @@
+[
+  "test_mockapi.py::TestMockApi::()::test_googlemap_api_http_return",
+  "test_mockapi.py::TestMockApi::()::test_wikipedia_api_http_return"
+]
