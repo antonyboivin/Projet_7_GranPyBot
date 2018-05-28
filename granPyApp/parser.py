@@ -22,7 +22,7 @@ class Parser:
         self.user_request = self.user_request.lower()
         self.user_request = self.user_request.split(" ")
 
-        with open("granPyApp/gpb_stopwords.json") as stop_words_file:#"granPyApp/gpb_stopwords.json"
+        with open("granPyApp/gpb_stopwords.json") as stop_words_file:
             gpb_stopwords = json.load(stop_words_file)
         for word in gpb_stopwords:
             if word in self.user_request:

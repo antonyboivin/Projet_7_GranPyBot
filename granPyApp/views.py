@@ -33,23 +33,17 @@ def analysis():
     # Returns the description of the user's request.
     userRequestDescription = userRequestDescription.wikipedia_apicall()
 
+
     # Grouping of geographic and text data in the "datas" variable
-    datas = {"coordinate" : userRequestLocation,
-             "description" : userRequestDescription}
+    datas = {"coordinate" : userRequestLocation[0],
+             "formatted_address" : userRequestLocation[1],
+             "grandPy_formatted_address" : userRequestLocation[2],
+             "description" : userRequestDescription[0],
+             "grandPy_description" : userRequestDescription[1]}
 
     return jsonify(datas)
 
 
-"""
- def analysis():
-    userRequest = Parser(request.form['userRequest'])
-    userRequest = userRequest.clean_user_request()
-
-    userRequestLocation = GoogleMapsApi(userRequest)
-    userRequestLocation = userRequestLocation.GoogleMapsApiCall()
-    
-    return jsonify(userRequestLocation)
-"""
 
 
 if __name__ == "__main__":

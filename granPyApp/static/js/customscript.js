@@ -36,25 +36,39 @@
                   
                   // Initialization of the GoogleMap with setting the coordinates of the request.
                   initMap(coord);
-                  
-                  // Retrieving the "description" part of the JSON file.
-                  descript = analysisUserRequest.description
+                 
+                  // Retrieving the "formatted_address" part of the JSON file.
+                  formattedAddress = analysisUserRequest.formatted_address
+                  // Retrieving the "grandPy_formatted_address" part of the JSON file.
+                  granpyFormattedAddress = analysisUserRequest.grandPy_formatted_address
                   // Added the answer of grandPy-Bot.                  
-                  var userRequest = "GrandPy : " + descript;
+                  var userRequest = "GrandPy : " + granpyFormattedAddress + formattedAddress;
                   // Creating a "div" element and assigning a "grandPyAnswer" class.                  
                   var div = document.createElement('div');
                   div.setAttribute("class", "grandPyAnswer");
-        /*div.focus();*/
+
                   // Adding the answer to the following dialog box.
                   div.append(userRequest);
                   $(".answer").append(div);
                   // Method .scrollTop() makes it possible to keep the last exchanges visible in the dialog box.
                   $(".answer").scrollTop($(".answer")[0].scrollHeight);
 
-                  
+                  // Retrieving the "description" part of the JSON file.
+                  descript = analysisUserRequest.description
+                  // Retrieving the "grandPy_decription" part of the JSON file.
+                  granpyDescript = analysisUserRequest.grandPy_description
+                  // Added the answer of grandPy-Bot.                  
+                  var userRequest = "GrandPy : " + granpyDescript + descript;
+                  // Creating a "div" element and assigning a "grandPyAnswer" class.                  
+                  var div = document.createElement('div');
+                  div.setAttribute("class", "grandPyAnswer");
 
+                  // Adding the answer to the following dialog box.
+                  div.append(userRequest);
+                  $(".answer").append(div);
+                  // Method .scrollTop() makes it possible to keep the last exchanges visible in the dialog box.
+                  $(".answer").scrollTop($(".answer")[0].scrollHeight);
                 }
-
             });
         });
     });

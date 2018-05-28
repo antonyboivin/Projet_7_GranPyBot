@@ -3,6 +3,7 @@
     to return useful values ​​for the application.
 """
 import requests
+from .grandpysoul import GrandPySoul
 
 
 class WikipediaApi:
@@ -18,13 +19,19 @@ class WikipediaApi:
                            'limit' :1}
         self.api_request = requests.get(self.url, params=self.parametres)
         self.api_response = self.api_request.json()
+        self.grandpy_soul = GrandPySoul()
 
 
-    
+
     def wikipedia_apicall(self):
         """
             Returns a description of the user request.
         """
-        # print(self.api_request.url)
-        # print(self.api_response[2])
-        return self.api_response[2]
+
+        if len(self.api_response[2][0]) == 0:
+            self.grandpy_soul = self.grandpy_soul.error_message_quote()
+            return self.api_response[2], self.grandpy_soul
+        else:
+            self.grandpy_soul = GrandPySoul()
+            self.grandpy_soul = self.grandpy_soul.desrciption_quote()
+            return self.api_response[2], self.grandpy_soul

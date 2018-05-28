@@ -75,7 +75,10 @@
     background-image: linear-gradient(white, #147a3b);
 }
 
-
+.LegalNotice{
+    color: yellow;
+    text-align: center;
+}
 
 
 /*----  [Social Icons]  ----*/
