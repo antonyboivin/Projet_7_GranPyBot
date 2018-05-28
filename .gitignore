@@ -1,5 +1,6 @@
 VENV/
 .idea
+.vscode/
 geckodriver.log
 notePerso.md
-.vscode/
+
