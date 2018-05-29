@@ -1,16 +1,10 @@
-import os
-from flask import Flask, render_template, request, jsonify, send_from_directory
-
+from flask import Flask, render_template, request, jsonify
 from .parser import Parser
 from .apigooglemap import GoogleMapsApi
 from .apiwikipedia import WikipediaApi
 
 app = Flask(__name__)
 
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),
-                                'favicon.ico',mimetype='image/vnd.microsoft.icon')
 
 @app.route('/')
 @app.route('/index')
