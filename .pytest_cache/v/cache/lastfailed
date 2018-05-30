@@ -1,6 +1,0 @@
-{
-  "test_mockapi.py::TestApiMock": true,
-  "test_mockapi.py::TestApiMock::()::test_http_return": true,
-  "test_mockapi.py::test_Inspiration": true,
-  "test_mockapi.py::test_google_api_http_return": true
-}
