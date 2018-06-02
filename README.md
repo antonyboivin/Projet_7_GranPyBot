@@ -57,7 +57,7 @@ def test_can_start_a_search_whith_GranPy_Bot(self):
 
 ## Deployment
 
-The app is deployed on Heroku at
+The app is deployed on Heroku at https://antonyboivin-grandpy-bot.herokuapp.com/
 
 ## Built With
 
